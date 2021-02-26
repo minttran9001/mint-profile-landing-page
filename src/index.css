@@ -1,13 +1,30 @@
+:root {
+  --font-sub: 'Brother Home Demo Version';
+  --font-main : 'MADE SAONARA';
+  --color-red:#C74D4D;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased; 
   -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-main);
+
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.cursor{
+  z-index: 10000;
+  background-image: url('./images/100ppi/Cursor.png');
+  width: 50px;
+  top: 0;
+  pointer-events: none;
+  transition: .2s ease-out;
+  background-position: center;
+  background-size: contain;
+  height: 50px;
+  position: absolute;
+
+}
+.cursor.clicked{
+  transform: scale(1.5);
+
 }

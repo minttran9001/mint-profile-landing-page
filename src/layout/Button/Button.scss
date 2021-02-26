@@ -1,0 +1,19 @@
+.eye-button{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: var(--color-red);
+    align-items: center;
+    transition: all .5s;
+    justify-content: center;
+    cursor: pointer;
+    display: flex;
+    font-family: var(--font-sub);
+    img{
+        margin-right: 20px;
+        width: 40px;
+    }
+    &:hover{
+        transform: scale(1.3) rotate(-5deg);
+    }
+}
