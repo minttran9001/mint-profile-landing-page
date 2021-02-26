@@ -1,0 +1,41 @@
+.project-container{
+    display: flex;
+    margin-top: 100px;
+
+    justify-content: space-around;
+}
+.section-heading{
+    color: var(--color-black);
+
+    flex: .7;
+    display: flex;
+    justify-content: center;
+    p{
+        font-size: 40px;
+        letter-spacing: 5px;
+    }
+}
+.projects-wrap{
+    background-image: url('../../images/100ppi/frame-paint1.png');
+    flex: 1;
+    background-size: contain;
+    padding:70px;
+
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: top 30px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 100vw;
+    .projects-box{
+        display: flex;
+        transition: all .5s;
+        .drag-notice{
+            font-weight: bold;
+            font-size: 20px;
+            font-family: var(--font-sub);
+            color: var(--color-red);
+        }
+    }
+   
+}

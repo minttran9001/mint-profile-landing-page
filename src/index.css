@@ -2,6 +2,7 @@
   --font-sub: 'Brother Home Demo Version';
   --font-main : 'MADE SAONARA';
   --color-red:#C74D4D;
+  --color-black:#141414;
 }
 body {
   margin: 0;
@@ -24,7 +25,19 @@ body {
   position: absolute;
 
 }
+.cursor.dragging{
+  background-image: url('./images/100ppi/drag-button3.png');
+  transform: scale(2);
+
+
+}
 .cursor.clicked{
   transform: scale(1.5);
 
+}
+.font-main{
+  font-family: var(--font-main);
+}
+.font-sub{
+  font-family: var(--font-sub);
 }

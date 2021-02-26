@@ -5,7 +5,7 @@ import paint1 from "../../images/100ppi/paint1.png";
 import paint2 from "../../images/100ppi/paint2.png";
 import paint3 from "../../images/100ppi/paint3.png";
 import paint4 from "../../images/100ppi/paint4.png";
-import Button from "../../layout/Button/Button";
+import Button from "../../components/Button/Button"
 import { NavLink } from "react-router-dom";
 
 export default class Exhibition extends Component {

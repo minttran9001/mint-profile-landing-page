@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Exhibition from "./pages/Exhibition/Exhibition";
+import Project from "./pages/Project/Project";
 
 export default class App extends Component {
   constructor(props) {
@@ -11,6 +12,11 @@ export default class App extends Component {
           path: "/",
           name: "Exhibition",
           Component: Exhibition,
+        },
+        {
+          path: "/project",
+          name: "Project",
+          Component: Project,
         },
       ],
     };
