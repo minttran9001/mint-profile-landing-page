@@ -29,7 +29,7 @@ export default class ProjectCard extends Component {
                     <img src={this.props.projectImage} alt=""/>
                     <Button>Explore</Button>
                 </div>
-                <NavLink onMouseOver={this.hover} onMouseOut={this.leave} to={this.props.projectPath} className="project-name">
+                <NavLink onMouseOver={this.hover} onMouseOut={this.leave} to={`project/${this.props.projectId}`} className="project-name">
                     <p>
                         {this.props.projectName}
                     </p>

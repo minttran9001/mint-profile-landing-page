@@ -2,57 +2,18 @@ import React, { Component } from "react";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import Header from "../../layout/Header/Header";
 import "./Project.scss";
-import chatApp from "../../images/100ppi/appchat.PNG";
-import coffeeShop from "../../images/100ppi/ceremony.PNG";
-import paint1 from "../../images/100ppi/paint1.png";
-import paint2 from "../../images/100ppi/paint2.png";
-import paint3 from "../../images/100ppi/paint3.png";
-import paint4 from "../../images/100ppi/paint4.png";
+import loading from "../../images/100ppi/Loading1.png";
+import projectApi from "../../api/projectApi";
 export default class Project extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      projectArr: [
-        {
-          image: chatApp,
-          name: "Realtime Chat Application",
-          id: 1,
-          description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et minima quos! Odio debitis fugiat minus officiis incidunt enim id quo sed beatae animi, quibusdam quisquam facilis velit molestias? Voluptatem",
-        },
-        {
-          image: coffeeShop,
-          id: 2,
-          name: "Ceremony Coffee Website",
-          description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et minima quos! Odio debitis fugiat minus officiis incidunt enim id quo sed beatae animi, quibusdam quisquam facilis velit molestias? Voluptatem",
-        },
-        {
-          image: coffeeShop,
-          id: 2,
-          name: "Ceremony Coffee Website",
-          description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et minima quos! Odio debitis fugiat minus officiis incidunt enim id quo sed beatae animi, quibusdam quisquam facilis velit molestias? Voluptatem",
-        },
-        {
-          image: coffeeShop,
-          id: 2,
-          name: "Ceremony Coffee Website",
-          description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et minima quos! Odio debitis fugiat minus officiis incidunt enim id quo sed beatae animi, quibusdam quisquam facilis velit molestias? Voluptatem",
-        },
-        {
-          image: coffeeShop,
-          id: 2,
-          name: "Ceremony Coffee Website",
-          description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et minima quos! Odio debitis fugiat minus officiis incidunt enim id quo sed beatae animi, quibusdam quisquam facilis velit molestias? Voluptatem Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et minima quos! Odio debitis fugiat minus officiis incidunt enim id quo sed beatae animi, quibusdam quisquam facilis velit molestias? Voluptatem",
-        },
-      ],
+      projectArr: [],
       left: 0,
+      isLoading: true,
     };
   }
-  componentDidMount() {
+  async componentDidMount() {
     const slider = document.getElementById("slider");
     const cursor = document.querySelector(".cursor");
     slider.addEventListener("mousedown", (e) => {
@@ -83,9 +44,21 @@ export default class Project extends Component {
         }
       );
     });
+    try {
+      const arr = await projectApi.getAll();
+      if (arr.length > 0) {
+        this.setState({
+          projectArr: arr,
+          isLoading: false,
+        });
+      }
+    } catch (error) {
+      console.log("Falied to fetch project api", error);
+    }
   }
 
   render() {
+    console.log(this.state.projectArr);
     return (
       <Header>
         <div className="project-section landing-page section">
@@ -94,27 +67,28 @@ export default class Project extends Component {
               <p>Projects</p>
             </div>
             <div className="projects-wrap">
-                
               <div id="slider" className="projects-box">
-
-              <div className="drag-notice">
-                    <p>Click and drag</p>
-                </div>
-                {this.state.projectArr.map((item, index) => (
-                  <ProjectCard
-                    key={index}
-                    projectPath={`/project/${item.id}`}
-                    projectImage={item.image}
-                    projectDescription={item.description}
-                    projectName={item.name}
-                  />
-                ))}
+                {this.state.isLoading ? (
+                  <div className="loading-icon">
+                    <p>Loading ...</p>
+                  </div>
+                ) : (
+                  <>
+                    <div className="drag-notice">
+                      <p>Click and drag</p>
+                    </div>
+                    {this.state.projectArr.map((item, index) => (
+                      <ProjectCard
+                        key={index}
+                        projectId={item.id}
+                        projectImage={item.image}
+                        projectDescription={item.description}
+                        projectName={item.name}
+                      />
+                    ))}
+                  </>
+                )}
               </div>
-            </div>
-            <div className="paint-background">
-              <img className="paint-2" src={paint2} alt="paint" />
-              <img className="paint-3" src={paint3} alt="paint" />
-              <img className="paint-4" src={paint4} alt="paint" />
             </div>
           </div>
         </div>

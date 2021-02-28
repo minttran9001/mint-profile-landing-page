@@ -1,7 +1,6 @@
 .project-container{
     display: flex;
     margin-top: 100px;
-
     justify-content: space-around;
 }
 .section-heading{
@@ -16,19 +15,19 @@
     }
 }
 .projects-wrap{
-    background-image: url('../../images/100ppi/frame-paint1.png');
+    background-image: url('../../images/100ppi//frame-paint1_3.png');
     flex: 1;
     background-size: contain;
     padding:70px;
-
     position: relative;
     background-repeat: no-repeat;
     background-position: top 30px;
-    overflow-x: scroll;
+    overflow-x: hidden;
     overflow-y: hidden;
     width: 100vw;
     .projects-box{
         display: flex;
+
         transition: all .5s;
         .drag-notice{
             font-weight: bold;
@@ -37,5 +36,44 @@
             color: var(--color-red);
         }
     }
-   
+}
+.loading-icon{
+    font-family: var(--font-sub);
+    color: var(--color-red);
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+}
+@media screen and (max-width:960px)
+{
+    .project-container{
+        flex-direction: column;
+    }
+    .section-heading{
+        top: 0;
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        p
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: .5;
+            font-size: 60px;
+        }
+    }
+    .paint-background{
+        .paint-3 , .paint-4 , .paint-2{
+            display: none;
+        }
+    }
+}
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(-360deg);
+    }
 }

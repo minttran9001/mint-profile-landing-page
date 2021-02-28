@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Exhibition from "./pages/Exhibition/Exhibition";
 import Project from "./pages/Project/Project";
+import ProjectDetail from "./pages/ProjectDetail/ProjectDetail";
 
 export default class App extends Component {
   constructor(props) {
@@ -17,6 +18,11 @@ export default class App extends Component {
           path: "/project",
           name: "Project",
           Component: Project,
+        },
+        {
+          path: "/project/:id",
+          name: "Project Detail",
+          Component: ProjectDetail,
         },
       ],
     };
