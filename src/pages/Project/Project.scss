@@ -1,17 +1,39 @@
+.project-section{
+    position: relative;
+    z-index: 1;
+    &::before{
+        content: '';
+        background-color: rgba($color: #0a0a0a, $alpha: .3);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+    }
+}
 .project-container{
     display: flex;
     margin-top: 100px;
+    position: relative;
+
     justify-content: space-around;
+    
 }
 .section-heading{
-    color: var(--color-black);
-
     flex: .7;
     display: flex;
     justify-content: center;
     p{
         font-size: 40px;
         letter-spacing: 5px;
+    }
+    &.text-black{
+        color: var(--color-black);
+
+    }
+    &.text-light{
+        color: white;
     }
 }
 .projects-wrap{

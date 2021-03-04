@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import Header from "../../layout/Header/Header";
 import "./ProjectDetail.scss";
-import videoTest from "../../images/100ppi/React App - Opera 2021-02-26 22-42-31.mp4";
 import playBtnImg from "../../images/100ppi/play button1.png";
 import stopBtnImg from "../../images/100ppi/stop button2.png";
 import pauseBtnImg from "../../images/100ppi/pause.png";
 import volBtnImg from "../../images/100ppi/volume 1.png";
 import bigFrame from "../../images/100ppi/big frame2_1.png";
 import exitBtnImg from "../../images/100ppi/exit5.png";
-import projectApi from "../../api/projectApi";
+import { getProjectById } from "../../api/projectApi";
+import PageTransition from "../../layout/PageTransition/PageTransition";
 export default class ProjectDetail extends Component {
   constructor(props) {
     super(props);
@@ -43,7 +43,7 @@ export default class ProjectDetail extends Component {
     this.getProjectById();
   }
   async getProjectById() {
-    const project = await projectApi.getProjectById(this.props.match.params.id);
+    const project = await getProjectById(this.props.match.params.id);
     this.setState({
       project,
     });
@@ -92,8 +92,6 @@ export default class ProjectDetail extends Component {
       }, 3000);
     };
 
-    video.addEventListener("mouseenter", showControls);
-    video.addEventListener("mouseleave", hideControls);
     video.addEventListener("mousemove", showControls);
   }
 
@@ -114,70 +112,71 @@ export default class ProjectDetail extends Component {
     }
   }
   render() {
-    console.log(this.state.project)
     return (
-      <Header>
-        <div className="project-detail-section landing-page">
-          <div className="project-detail-container">
-            <div className="project-preview-video">
-              <img
-                className="close-btn"
-                onClick={this.closeFull}
-                src={exitBtnImg}
-                alt=""
-              />
-              <video
-                id="project-video"
-                className="project-video"
-                src={this.state.project.video}
-                autoPlay={false}
-              ></video>
-            </div>
-            <div className="video-play-tab">
-              <p className="title">{this.state.project.name}</p>
-              <div className="control-tab">
-                <div className="control-button">
-                  <img src={stopBtnImg} alt="" />
-                  <img
-                    onClick={
-                      this.state.playing ? this.pauseVideo : this.playVideo
-                    }
-                    src={this.state.playing ? pauseBtnImg : playBtnImg}
-                    alt=""
-                  />
-                </div>
-                <div className="track-line">
-                  <div className="duration-line"></div>
-                  <div
-                    style={{
-                      width:
-                        (this.state.currentTime / this.state.duration) * 100 +
-                        "%",
-                    }}
-                    className="current-line"
-                  ></div>
-                </div>
-                <div id="demo" className="time-line">
-                  <p>
-                    {" "}
-                    {new Date(Math.round(this.state.currentTime) * 1000)
-                      .toISOString()
-                      .substr(11, 8)}
-                  </p>
-                </div>
-                <div className="vol-button">
-                  <img src={volBtnImg} alt="" />
-                  <img
-                    onClick={this.openFull}
-                    src={bigFrame}
-                    alt="full frame btn"
-                  />
+      <PageTransition>
+        <Header>
+          <div className="project-detail-section landing-page">
+            <div className="project-detail-container">
+              <div className="project-preview-video">
+                <img
+                  className="close-btn"
+                  onClick={this.closeFull}
+                  src={exitBtnImg}
+                  alt=""
+                />
+                <video
+                  id="project-video"
+                  className="project-video"
+                  src={this.state.project.video}
+                  autoPlay={false}
+                ></video>
+              </div>
+              <div className="video-play-tab">
+                <p className="title">{this.state.project.name}</p>
+                <div className="control-tab">
+                  <div className="control-button">
+                    <img src={stopBtnImg} alt="" />
+                    <img
+                      onClick={
+                        this.state.playing ? this.pauseVideo : this.playVideo
+                      }
+                      src={this.state.playing ? pauseBtnImg : playBtnImg}
+                      alt=""
+                    />
+                  </div>
+                  <div className="track-line">
+                    <div className="duration-line"></div>
+                    <div
+                      style={{
+                        width:
+                          (this.state.currentTime / this.state.duration) * 100 +
+                          "%",
+                      }}
+                      className="current-line"
+                    ></div>
+                  </div>
+                  <div id="demo" className="time-line">
+                    <p>
+                      {" "}
+                      {new Date(Math.round(this.state.currentTime) * 1000)
+                        .toISOString()
+                        .substr(11, 8)}
+                    </p>
+                  </div>
+                  <div className="vol-button">
+                    <img src={volBtnImg} alt="" />
+                    <img
+                      onClick={this.openFull}
+                      src={bigFrame}
+                      alt="full frame btn"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </Header>
+        </Header>
+      </PageTransition>
     );
   }
 }

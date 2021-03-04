@@ -7,11 +7,13 @@ import paint3 from "../../images/100ppi/paint3.png";
 import paint4 from "../../images/100ppi/paint4.png";
 import Button from "../../components/Button/Button"
 import { NavLink } from "react-router-dom";
+import PageTransition from "../../layout/PageTransition/PageTransition";
 
 export default class Exhibition extends Component {
   render() {
     return (
-      <Header>
+      <PageTransition>
+        <Header>
         <div className="exhibition-section landing-page section">
           <div className="qoute-container container">
             <div className="exhibition-qoute">
@@ -29,6 +31,7 @@ export default class Exhibition extends Component {
           </div>
         </div>
       </Header>
+      </PageTransition>
     );
   }
 }

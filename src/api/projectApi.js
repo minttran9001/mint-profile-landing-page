@@ -1,13 +1,13 @@
 import {STATIC_PROJECT_API} from './fakeApi'
 
- const getAll = ()=>{
+export  const getAll = ()=>{
     return new Promise(resolve=>{
         setTimeout(()=>{
             resolve(STATIC_PROJECT_API)
         },1000)
     })
 }
-const getProjectById = (pid)=>{
+export const getProjectById = (pid)=>{
     return new Promise (resolve =>{
         debugger
         const convertedId = Number(pid)
@@ -15,8 +15,4 @@ const getProjectById = (pid)=>{
        const project =  newArr.find((project)=>project.id===convertedId)
        resolve(project)
     })
-}
-export default {
-    getAll,
-    getProjectById
 }

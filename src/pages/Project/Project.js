@@ -2,17 +2,16 @@ import React, { Component } from "react";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import Header from "../../layout/Header/Header";
 import "./Project.scss";
-import loading from "../../images/100ppi/Loading1.png";
-import projectApi from "../../api/projectApi";
+import {getAll} from "../../api/projectApi";
+import PageTransition from "../../layout/PageTransition/PageTransition";
 export default class Project extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+
+    state = {
       projectArr: [],
       left: 0,
       isLoading: true,
     };
-  }
+  
   async componentDidMount() {
     const slider = document.getElementById("slider");
     const cursor = document.querySelector(".cursor");
@@ -45,7 +44,7 @@ export default class Project extends Component {
       );
     });
     try {
-      const arr = await projectApi.getAll();
+      const arr = await getAll();
       if (arr.length > 0) {
         this.setState({
           projectArr: arr,
@@ -58,9 +57,9 @@ export default class Project extends Component {
   }
 
   render() {
-    console.log(this.state.projectArr);
     return (
-      <Header>
+      <PageTransition>
+        <Header>
         <div className="project-section landing-page section">
           <div className="project-container container">
             <div className="section-heading font-sub">
@@ -93,6 +92,7 @@ export default class Project extends Component {
           </div>
         </div>
       </Header>
+      </PageTransition>
     );
   }
 }

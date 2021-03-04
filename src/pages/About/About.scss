@@ -1,0 +1,260 @@
+.about-section.section {
+    background-image: url('../../images/100ppi/about\ background.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 1;
+    background-repeat: no-repeat;
+    -webkit-animation-name: backgroundAnim;
+    -webkit-animation-duration: 10s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-timing-function: linear;
+    &::before {
+        content: '';
+        background-color: rgba($color: #0a0a0a, $alpha: .8);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+    }
+
+    .section-heading-about {
+        width: 100%;
+        position: relative;
+        p {
+            font-size: 40px;
+            letter-spacing: 5px;
+        }
+  
+        
+  
+        &.text-black {
+            color: var(--color-black);
+
+        }
+
+        &.text-light {
+            color: white;
+        }
+        .before{
+            background-color: white;
+            border-radius: 4px;
+            height: 1px;
+            bottom: 0;
+            width: 0;
+            right: 0;
+            position: absolute;
+        }
+    }
+}
+
+.about-container {
+    display: flex;
+}
+
+.about-profile-wrap {
+ 
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    z-index: -1;
+    transition: 1s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    align-items: center;
+
+    .section-heading {
+        flex: initial;
+
+    }
+}
+
+.about-profile {
+    height: 100vh;
+  
+    display: flex;
+    width: 100vw;
+    align-items: center;
+
+    
+}
+
+.about-content-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transition: .5s ease-in-out;
+    padding-left: 100px;
+    width: 50%;
+    color:white;
+    &.bg-brown{
+        color: black;
+        background-color: #CA9C74;
+    }
+    &.bg-pink{
+        color: black;
+        background-color: #FBC7B3;
+    }
+    &.bg-dark{
+        background-color: #20120B;
+        color: white;
+    }
+}
+.about-content{
+    width: 100%;
+}
+.about-image-wrap {
+
+    width: 50%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+
+    align-items: center;
+    justify-content: center;
+    .about-image {
+        width: 300px;
+        height: 450px;
+        
+        background-color: white;
+        padding: 10px;
+        overflow: hidden;
+        img {
+            transition: .5s;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+.profile-name {
+    font-size: 40px;
+}
+
+.profile-role {
+    font-size: 12px;
+
+    letter-spacing: 2px;
+    font-family: var(--font-sub);
+
+}
+
+.profile-description{
+   p{
+       span{
+           letter-spacing: 2px ;
+
+           font-weight: bold;
+       }
+       font-size: 14px;
+    font-weight: lighter;
+    letter-spacing: .5px ;
+   }
+   a{
+       color: white;
+   }
+}
+.bottom-line{
+    margin: 30px 0 0 0;
+    width: 35%;
+    background-color: white;
+    height: 1px;
+}
+.profile-social {
+    img {
+        cursor: pointer;
+
+        margin-right: 20px;
+        width: 50px;
+    }
+}
+
+.slide-button-wrap {
+    width: 30px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    right: 10px;
+}
+
+.slide-button {
+    background-color: rgba($color: #fff, $alpha: .5);
+    border-radius: 20px;
+    padding: 10px 5px;
+
+    .circle {
+        height: 15px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: .5s;
+        z-index: 1;
+        margin: 15px 0;
+        width: 15px;
+        background-color: var(--color-red);
+
+        &.is-active {
+            background-color: white;
+
+        }
+    }
+}
+.skill-languages{
+    display: grid;
+    gap: 40px;
+    margin-top: 50px;
+    grid-template-columns: repeat(2,1fr);
+}
+.skill-item{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    cursor: pointer;
+    flex-direction: column;
+    img{
+        width: 70px;
+    }
+    span{
+        font-size: 20px;
+    }
+}
+@keyframes backgroundAnim{
+    0% {
+        background-size: 150%;
+      }
+      20% {
+        background-size: 160%;
+      }
+      40% {
+        background-size: 170%;
+      }
+      60% {
+        background-size: 160%;
+      }
+      80% {
+        background-size: 150%;
+      }
+      100% {
+        background-size: 145%;
+      }
+}
+@keyframes textFill{
+    0%{
+        width: 0;
+    }
+    50%{
+        width:100%
+
+    }
+    100%{
+        width:0,
+    }
+    
+}

@@ -7,6 +7,7 @@ import paint3 from "../../images/100ppi/paint-asset4.png";
 import appchat from "../../images/100ppi/project-1.JPG";
 import ceremony from "../../images/100ppi/project-2.JPG";
 import mint from "../../images/100ppi/mint.JPG";
+import logoRed from '../../images/100ppi/Logo red.png'
 import arrowProject from "../../images/100ppi/arrow-red-asset3.png";
 export default class Header extends Component {
   constructor(props) {
@@ -33,8 +34,7 @@ export default class Header extends Component {
         <header className="header">
           <div className="header-wrap">
           <NavLink to="/" className="logo-area">
-            <span>mint's</span>
-            <span>resume</span>
+           <img src={logoRed} alt='logo'/>
           </NavLink>
           <div className="menu-button">
             <span

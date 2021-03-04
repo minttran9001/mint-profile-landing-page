@@ -1,5 +1,7 @@
+import { AnimatePresence } from "framer-motion";
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, useLocation } from "react-router-dom";
+import About from "./pages/About/About";
 import Exhibition from "./pages/Exhibition/Exhibition";
 import Project from "./pages/Project/Project";
 import ProjectDetail from "./pages/ProjectDetail/ProjectDetail";
@@ -24,6 +26,11 @@ export default class App extends Component {
           name: "Project Detail",
           Component: ProjectDetail,
         },
+        {
+          path: "/about",
+          name: "About Me",
+          Component: About,
+        },
       ],
     };
   }
@@ -47,16 +54,22 @@ export default class App extends Component {
       <div className="App">
         <div className="cursor"></div>
         <BrowserRouter>
-          <Switch>
-            {this.state.routes.map((item, index) => (
-              <Route
-                key={item.name}
-                path={item.path}
-                exact
-                component={item.Component}
-              />
-            ))}
-          </Switch>
+          <Route
+            render={({ location }) => (
+              <AnimatePresence exitBeforeEnter>
+                <Switch key={location.pathname} location={location}>
+                  {this.state.routes.map((item, index) => (
+                    <Route
+                      key={item.name}
+                      path={item.path}
+                      exact
+                      component={item.Component}
+                    />
+                  ))}
+                </Switch>
+              </AnimatePresence>
+            )}
+          ></Route>
         </BrowserRouter>
       </div>
     );
