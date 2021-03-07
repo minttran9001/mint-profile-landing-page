@@ -52,7 +52,7 @@ export default class Header extends Component {
       <>
         <header className="header">
           <div className="header-wrap">
-          <NavLink to="/mint-profile-landing-page" className="logo-area">
+          <NavLink to="/mint-profile-landing-page/exihibition" className="logo-area">
            <img src={logoRed} alt='logo'/>
           </NavLink>
           <div className="menu-button">
@@ -72,7 +72,7 @@ export default class Header extends Component {
           <nav className="navigation">
             <ul className="nav-list">
               <li className="nav-item">
-                <NavLink to="/project" className="text-script">
+                <NavLink to="/mint-profile-landing-page/project" className="text-script">
                   <div className="nav-link">
                     <span>Projects</span>{" "}
                     <img className="arrow" src={arrowProject} alt="" />
@@ -100,7 +100,7 @@ export default class Header extends Component {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/about" className="text-script">
+                <NavLink to="/mint-profile-landing-page/about" className="text-script">
                   <div className="nav-link">
                     <span>About me</span>{" "}
                     <img className="arrow" src={arrowProject} alt="" />
@@ -116,7 +116,7 @@ export default class Header extends Component {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/say-hello" className="text-script">
+                <NavLink to="/mint-profile-landing-page/say-hello" className="text-script">
                   <div className="nav-link">
                     <span>Say hello</span>{" "}
                     <img className="arrow" src={arrowProject} alt="" />
