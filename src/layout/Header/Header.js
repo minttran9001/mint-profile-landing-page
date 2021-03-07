@@ -52,7 +52,7 @@ export default class Header extends Component {
       <>
         <header className="header">
           <div className="header-wrap">
-          <NavLink to="/mint-profile-landing-page" className="logo-area">
+          <NavLink to="/" className="logo-area">
            <img src={logoRed} alt='logo'/>
           </NavLink>
           <div className="menu-button">
