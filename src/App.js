@@ -13,27 +13,27 @@ export default class App extends Component {
     this.state = {
       routes: [
         {
-          path: "/mint-profile-landing-page/exihibition",
+          path: "/",
           name: "Exhibition",
           Component: Exhibition,
         },
         {
-          path: "/mint-profile-landing-page/project",
+          path: "/project",
           name: "Project",
           Component: Project,
         },
         {
-          path: "/mint-profile-landing-page/project/:id",
+          path: "/project/:id",
           name: "Project Detail",
           Component: ProjectDetail,
         },
         {
-          path: "/mint-profile-landing-page/about",
+          path: "/about",
           name: "About Me",
           Component: About,
         },
         {
-          path: "/mint-profile-landing-page/say-hello",
+          path: "/say-hello",
           name: "Say Hello ",
           Component: SayHello,
         },
