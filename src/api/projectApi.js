@@ -8,11 +8,16 @@ export  const getAll = ()=>{
     })
 }
 export const getProjectById = (pid)=>{
-    return new Promise (resolve =>{
-        debugger
+    return new Promise ((resolve,reject) =>{
         const convertedId = Number(pid)
         const newArr = STATIC_PROJECT_API
        const project =  newArr.find((project)=>project.id===convertedId)
-       resolve(project)
+       if(project)
+       {
+        resolve(project)
+       }
+       else{
+           reject(`Cannot find project with id ${pid}`)
+       }
     })
 }

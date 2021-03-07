@@ -9,6 +9,7 @@ import ceremony from "../../images/100ppi/project-2.JPG";
 import mint from "../../images/100ppi/mint.JPG";
 import logoRed from '../../images/100ppi/Logo red.png'
 import arrowProject from "../../images/100ppi/arrow-red-asset3.png";
+import gsap from "gsap";
 export default class Header extends Component {
   constructor(props) {
     super(props);
@@ -18,14 +19,32 @@ export default class Header extends Component {
     const openBtn = document.querySelector(".open-menu");
     const closeBtn = document.querySelector(".close-menu");
     const menu = document.querySelector(".navigation");
+    const navItem = document.querySelectorAll('.nav-item')
+    
+    const tl = gsap.timeline({repeat :0})
+
+    
+
     if (type === "close") {
       closeBtn.classList.remove("is-active");
       openBtn.classList.add("is-active");
       menu.classList.remove("is-active");
+      tl.to(navItem,1,{
+        
+        opacity : 0,
+        stagger  : .5
+      })
+      
     } else {
       closeBtn.classList.add("is-active");
       openBtn.classList.remove("is-active");
       menu.classList.add("is-active");
+      tl.fromTo(navItem,1,{
+        opacity : 0,
+      },{
+        opacity : 1,
+        stagger  : .2
+      })
     }
   }
   render() {
@@ -97,13 +116,13 @@ export default class Header extends Component {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/all" className="text-script">
+                <NavLink to="/say-hello" className="text-script">
                   <div className="nav-link">
-                    <span>All in this together</span>{" "}
+                    <span>Say hello</span>{" "}
                     <img className="arrow" src={arrowProject} alt="" />
                   </div>
 
-                  <p>All in this together</p>
+                  <p>Say hello</p>
                   <span>03</span>
                   <div className="project-preview preview-item">
                     <div className="image-wrap">

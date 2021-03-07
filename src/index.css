@@ -1,12 +1,13 @@
 :root {
   --font-sub: 'Brother Home Demo Version';
-  --font-main : 'MADE SAONARA';
+  --font-main : 'Montserrat';
   --color-red:#C74D4D;
   --color-black:#141414;
 }
-body {
+body,html {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   -webkit-font-smoothing: antialiased; 
   -moz-osx-font-smoothing: grayscale;
   font-family: var(--font-main);
@@ -20,7 +21,7 @@ body {
   width: 50px;
   top: 0;
   pointer-events: none;
-  transition: .2s ease-out;
+  transition: .4s ease-out;
   background-position: center;
   background-size: contain;
   height: 50px;

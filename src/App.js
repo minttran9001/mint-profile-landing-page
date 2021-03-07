@@ -1,10 +1,11 @@
 import { AnimatePresence } from "framer-motion";
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch, useLocation } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import About from "./pages/About/About";
 import Exhibition from "./pages/Exhibition/Exhibition";
 import Project from "./pages/Project/Project";
 import ProjectDetail from "./pages/ProjectDetail/ProjectDetail";
+import SayHello from "./pages/SayHello/SayHello";
 
 export default class App extends Component {
   constructor(props) {
@@ -30,6 +31,11 @@ export default class App extends Component {
           path: "/about",
           name: "About Me",
           Component: About,
+        },
+        {
+          path: "/say-hello",
+          name: "Say Hello ",
+          Component: SayHello,
         },
       ],
     };

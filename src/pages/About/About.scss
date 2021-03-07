@@ -1,15 +1,12 @@
+
 .about-section.section {
-    background-image: url('../../images/100ppi/about\ background.png');
+    background-image: url('../../images//100ppi/manor.f881ff2.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
     z-index: 1;
     background-repeat: no-repeat;
-    -webkit-animation-name: backgroundAnim;
-    -webkit-animation-duration: 10s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-direction: alternate;
-    -webkit-animation-timing-function: linear;
+
     &::before {
         content: '';
         background-color: rgba($color: #0a0a0a, $alpha: .8);
@@ -62,10 +59,9 @@
     display: flex;
     z-index: -1;
     transition: 1s ease-in-out;
-    position: absolute;
+    position: fixed;
     top: 0;
-    left: 0;
-    align-items: center;
+    left:0 ;
 
     .section-heading {
         flex: initial;
@@ -167,6 +163,10 @@
     height: 1px;
 }
 .profile-social {
+    display: flex;
+    p{
+        margin-right: 20px;
+    }
     img {
         cursor: pointer;
 
@@ -223,6 +223,21 @@
     }
     span{
         font-size: 20px;
+    }
+}
+@media screen and (max-width:960px){
+    .slide{
+        flex-direction: column;
+    }
+    .about-content-wrap{
+        padding: 0 ;
+        width: 80%;
+    }
+    .about-content{
+        padding: 30px;
+    }
+    .about-image-wrap{
+        display: none;
     }
 }
 @keyframes backgroundAnim{

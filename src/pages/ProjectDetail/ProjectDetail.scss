@@ -2,6 +2,12 @@
     background-image: url('../../images/100ppi/project-detail.png');
     background-size: cover;
     background-repeat: no-repeat;
+    -webkit-animation-name: backgroundAnim;
+    background-position: center;
+    -webkit-animation-duration: 10s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-timing-function: linear;
 }
 .close-btn{
     width: 30px;
@@ -136,6 +142,9 @@
     }
 }
 @media screen and (max-width:960px){
+    .project-detail-section {
+        background-size: 1000px;
+    }
     .project-detail-container{
         display: flex;
         align-items: center;
@@ -173,4 +182,25 @@
         order: 3;
        
     }
+    
+}
+@keyframes backgroundAnim{
+    0% {
+        background-size: 100%;
+      }
+      20% {
+        background-size: 110%;
+      }
+      40% {
+        background-size: 120%;
+      }
+      60% {
+        background-size: 125%;
+      }
+      80% {
+        background-size: 110%;
+      }
+      100% {
+        background-size: 100%;
+      }
 }

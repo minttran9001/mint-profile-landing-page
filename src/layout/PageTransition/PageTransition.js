@@ -51,7 +51,7 @@ export default class PageTransition extends Component {
         opacity : 0,
         x : '-100%',
         transition : {
-          delay : 1,
+          delay : .5,
           duration : .8,
           ease: [0.87, 0, 0.13, 1],
         }

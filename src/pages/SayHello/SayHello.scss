@@ -1,0 +1,104 @@
+.sayhello-section{
+    background-image: url('../../images/100ppi/about\ background.png');
+    position: relative;
+    z-index: 1;
+
+    &::before {
+        content: '';
+        background-color: rgba($color: #0a0a0a, $alpha: .9);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+    }
+    .slide{
+        position: absolute;
+        pointer-events: none;
+        &.is-active{
+            pointer-events: initial;
+        }
+    }
+}
+.slider{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    justify-content: center;
+}
+
+.slide-text-only{
+    overflow: hidden;
+    .text-wrap{
+        overflow: hidden;
+    }
+    .head{
+        overflow: hidden;
+        p{
+            color: rgba($color: #fff, $alpha: 0.8);
+        font-weight: bold;
+        font-size: 12px;
+        }
+    }
+    p{
+
+        margin: 20px 0;
+        font-weight: bold;
+        overflow: hidden;
+        z-index: 1;
+        font-size: 60px;
+    }
+    a{
+        color: var(--color-red);
+        text-decoration: none;
+    }
+    .slide-image{
+        position: absolute;
+        z-index: -1;
+        bottom: -50px;
+        left: -200px;
+        img{
+            z-index: -1;
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+            
+        }
+        &::before{
+            position: absolute;
+            content: '';
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            background-color: rgba($color: #0a0a0a, $alpha: .5);
+        }
+    }
+}
+.slide-full{
+    p{
+        font-size: 100px;
+    }
+}
+@media screen and (max-width:960px)
+{
+    .slide-text-only{
+        p{
+            font-size: 30px;
+        }
+        .slide-image{
+            img{
+                width: 70%;
+            }
+            &::before{
+                width: 70%;
+            }
+        }
+    }
+    .slider{
+        justify-content: center;
+    }
+}
