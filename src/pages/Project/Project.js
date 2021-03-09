@@ -14,9 +14,10 @@ export default class Project extends Component {
       isLoading: true,
       isActive: 0,
       top: -3,
-      isWheeling : false,
+      isWheeling: false,
     };
     this.handleOnWheel = this.handleOnWheel.bind(this);
+    this.handleHintClick = this.handleHintClick.bind(this);
   }
 
   async componentDidMount() {
@@ -60,7 +61,7 @@ export default class Project extends Component {
     const slideTech = document.querySelectorAll(".project-technology");
     const slideLink = document.querySelectorAll(".project-link");
     const slideButton = document.querySelectorAll(".project-button");
-   
+
     gsap
       .timeline({ repeat: 0 })
       .fromTo(
@@ -176,11 +177,11 @@ export default class Project extends Component {
           opacity: 1,
           ease: "Power2.easeInOut",
           delay: 0.4,
-          onComplete : ()=>{
+          onComplete: () => {
             this.setState({
-              isWheeling : false
-            })
-          }
+              isWheeling: false,
+            });
+          },
         }
       )
       .play();
@@ -262,8 +263,7 @@ export default class Project extends Component {
       .play();
   }
   handleOnWheel(e) {
-    if(!this.state.isWheeling)
-    {
+    if (!this.state.isWheeling) {
       const circle = document.getElementById("circle-active");
       if (e.deltaY > 0) {
         if (this.state.isActive >= this.state.projectArr.length - 1) {
@@ -272,8 +272,7 @@ export default class Project extends Component {
           this.setState({
             isActive: 0,
             top: -3,
-            isWheeling : true
-
+            isWheeling: true,
           });
         } else {
           circle.style.top = `${this.state.top + 26}px`;
@@ -281,31 +280,43 @@ export default class Project extends Component {
           this.setState({
             isActive: this.state.isActive + 1,
             top: this.state.top + 26,
-            isWheeling : true
+            isWheeling: true,
           });
         }
       } else {
         if (this.state.isActive <= 0) {
           this.handleAnimateProject(this.state.projectArr.length - 1);
-          circle.style.top = `${-3  + (26 * (this.state.projectArr.length - 1))}px`;
+          circle.style.top = `${
+            -3 + 26 * (this.state.projectArr.length - 1)
+          }px`;
           this.setState({
             isActive: this.state.projectArr.length - 1,
-            top: -3  + (26 * (this.state.projectArr.length - 1)),
-            isWheeling : true
-
+            top: -3 + 26 * (this.state.projectArr.length - 1),
+            isWheeling: true,
           });
         } else {
           circle.style.top = `${this.state.top - 26}px`;
-  
+
           this.handleAnimateProject(this.state.isActive - 1);
           this.setState({
             isActive: this.state.isActive - 1,
             top: this.state.top - 26,
-            isWheeling : true
-
+            isWheeling: true,
           });
         }
       }
+    }
+  }
+  handleHintClick(index) {
+    if (!this.state.isWheeling) {
+      const circle = document.getElementById("circle-active");
+      this.handleAnimateProject(index);
+      circle.style.top = `${-3 + 26 * index}px`;
+      this.setState({
+        isActive: index,
+        top: this.state.top - 26,
+        isWheeling: true,
+      });
     }
   }
   render() {
@@ -372,7 +383,11 @@ export default class Project extends Component {
                   <div className="scroll-hint-wrap">
                     <div id="circle-active" className="circle-active"></div>
                     {this.state.projectArr.map((item, index) => (
-                      <div className="circle" key={index}></div>
+                      <div
+                        className="circle"
+                        onClick={() => this.handleHintClick(index)}
+                        key={index}
+                      ></div>
                     ))}
                     <div className="scroll-line"></div>
                     <div className="scroll-hint-text">

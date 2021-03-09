@@ -11,10 +11,11 @@ export default class SayHello extends Component {
     this.state = {
       isWheeling: false,
       isActive: 0,
-      top : -3,
+      top: -3,
     };
     this.handleOnWheel = this.handleOnWheel.bind(this);
     this.handleAnimateSlide = this.handleAnimateSlide.bind(this);
+    this.handleHintClick = this.handleHintClick.bind(this);
   }
   componentDidMount() {
     const tl = gsap.timeline({ repeat: 0 });
@@ -27,44 +28,43 @@ export default class SayHello extends Component {
     }
   }
   handleOnWheel(e) {
-    const slide = document.querySelectorAll(".hello-slide");
-    const circle = document.getElementById("circle-active");
-
     if (!this.state.isWheeling) {
+      const slide = document.querySelectorAll(".hello-slide");
+      const circle = document.getElementById("circle-active");
       if (e.deltaY > 0) {
         if (this.state.isActive >= slide.length - 1) {
-            circle.style.top = "-3px";
+          circle.style.top = "-3px";
           this.handleAnimateSlide(0, slide);
           this.setState({
             isActive: 0,
             isWheeling: true,
-            top : -3
+            top: -3,
           });
         } else {
-            circle.style.top = `${this.state.top + 26}px`;
+          circle.style.top = `${this.state.top + 26}px`;
           this.handleAnimateSlide(this.state.isActive + 1, slide);
           this.setState({
             isActive: this.state.isActive + 1,
             isWheeling: true,
-            top : this.state.top + 26
+            top: this.state.top + 26,
           });
         }
       } else {
         if (this.state.isActive <= 0) {
-            circle.style.top = `${-3  + (26 * (slide.length - 1))}px`;
+          circle.style.top = `${-3 + 26 * (slide.length - 1)}px`;
           this.handleAnimateSlide(slide.length - 1, slide);
           this.setState({
             isActive: slide.length - 1,
             isWheeling: true,
-            top  : -3  + (26 * (slide.length - 1))
+            top: -3 + 26 * (slide.length - 1),
           });
         } else {
-            circle.style.top = `${this.state.top - 26}px`;
+          circle.style.top = `${this.state.top - 26}px`;
           this.handleAnimateSlide(this.state.isActive - 1, slide);
           this.setState({
             isActive: this.state.isActive - 1,
             isWheeling: true,
-            top : this.state.top - 26
+            top: this.state.top - 26,
           });
         }
       }
@@ -73,13 +73,13 @@ export default class SayHello extends Component {
   handleAnimateSlide(index, slide) {
     const tl = gsap.timeline({ repeat: 0 });
     const curP = slide[this.state.isActive].querySelectorAll("p");
-    const tl2 = gsap.timeline({repeat : 0})
+    const tl2 = gsap.timeline({ repeat: 0 });
     const nextP = slide[index].querySelectorAll("p");
     const image1 = slide[this.state.isActive].querySelector(".slide-image");
-    
+
     const image2 = slide[index].querySelector(".slide-image");
-    slide[this.state.isActive].classList.remove('is-active')
-    slide[index].classList.add('is-active')
+    slide[this.state.isActive].classList.remove("is-active");
+    slide[index].classList.add("is-active");
 
     tl.to(curP, 0.8, {
       y: "-150%",
@@ -112,7 +112,7 @@ export default class SayHello extends Component {
       );
 
     if (image1) {
-        tl2.fromTo(
+      tl2.fromTo(
         image1,
         0.5,
         {
@@ -126,7 +126,7 @@ export default class SayHello extends Component {
       );
     }
     if (image2) {
-        tl2.fromTo(
+      tl2.fromTo(
         image2,
         0.5,
         {
@@ -136,9 +136,23 @@ export default class SayHello extends Component {
         {
           y: 0,
           opacity: 1,
-          delay : 1
+          delay: 1,
         }
       );
+    }
+  }
+  handleHintClick(index) {
+    
+    if (!this.state.isWheeling) {
+      const slide = document.querySelectorAll(".hello-slide");
+      const circle = document.getElementById("circle-active");
+      circle.style.top = `${-3 + 26 * index}px`;
+      this.handleAnimateSlide(index, slide);
+      this.setState({
+        isActive: index,
+        top: this.state.top - 26,
+        isWheeling: true,
+      });
     }
   }
   render() {
@@ -147,19 +161,31 @@ export default class SayHello extends Component {
         <Header>
           <div className="sayhello-section section landing-page">
             <div className="sayhello-container container">
-            <div className="scroll-hint">
-                  <div className="scroll-hint-wrap">
-                    <div id="circle-active" className="circle-active"></div>
-                    <div className="circle" ></div>
-                    <div className="circle" ></div>
-                    <div className="circle" ></div>
-                    <div className="circle" ></div>
-                    <div className="scroll-line"></div>
-                    <div className="scroll-hint-text">
-                      <p>scroll to discover</p>
-                    </div>
+              <div className="scroll-hint">
+                <div className="scroll-hint-wrap">
+                  <div id="circle-active" className="circle-active"></div>
+                  <div
+                    onClick={() => this.handleHintClick(0)}
+                    className="circle"
+                  ></div>
+                  <div
+                    onClick={() => this.handleHintClick(1)}
+                    className="circle"
+                  ></div>
+                  <div
+                    onClick={() => this.handleHintClick(2)}
+                    className="circle"
+                  ></div>
+                  <div
+                    onClick={() => this.handleHintClick(3)}
+                    className="circle"
+                  ></div>
+                  <div className="scroll-line"></div>
+                  <div className="scroll-hint-text">
+                    <p>scroll to discover</p>
                   </div>
                 </div>
+              </div>
               <div
                 onWheel={this.handleOnWheel}
                 className="say-hello-slider slider"
@@ -229,7 +255,10 @@ export default class SayHello extends Component {
                   <div className="slide-text-only">
                     <div className="text-wrap">
                       <p className="text-four">
-                        Feal free drop <NavLink target='black' to="#">a line!</NavLink>
+                        Feal free drop{" "}
+                        <a target="black" href='https://mailto:minttran.9001@gmail.com'>
+                          a line!
+                        </a>
                       </p>
                     </div>
                   </div>

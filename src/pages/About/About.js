@@ -22,20 +22,17 @@ export default class About extends Component {
       startY: 0,
       slideIndex: 0,
       top: -3,
-      isWheeling : false,
+      isWheeling: false,
     };
     this.handleOnWheel = this.handleOnWheel.bind(this);
   }
   handleOnWheel(e) {
-    if(!this.state.isWheeling)
-    {
-     
+    if (!this.state.isWheeling) {
       const circle = document.getElementById("circle-active");
 
       const wrapper = document.getElementById("about-slide-wrap");
       if (e.deltaY > 0) {
         if (this.state.startY > -200) {
-
           wrapper.style.transform = `translateY(${this.state.startY - 100}vh)`;
           circle.style.top = `${this.state.top + 26}px`;
           this.handleAnimateElement(this.state.slideIndex + 1);
@@ -43,22 +40,20 @@ export default class About extends Component {
             startY: this.state.startY - 100,
             slideIndex: this.state.slideIndex + 1,
             top: this.state.top + 26,
-            isWheeling : true,
-
+            isWheeling: true,
           });
         }
       } else {
         if (this.state.startY < 0) {
-
           circle.style.top = `${this.state.top - 26}px`;
-  
+
           this.handleAnimateElement(this.state.slideIndex - 1);
           wrapper.style.transform = `translateY(${this.state.startY + 100}vh)`;
           this.setState({
             startY: this.state.startY + 100,
             slideIndex: this.state.slideIndex - 1,
             top: this.state.top - 26,
-            isWheeling : true,
+            isWheeling: true,
           });
         }
       }
@@ -130,17 +125,19 @@ export default class About extends Component {
         },
         {
           width: "35%",
-          onComplete : ()=>{
+          onComplete: () => {
             this.setState({
-              isWheeling : false,
-            })
-          }
+              isWheeling: false,
+            });
+          },
         }
       )
       .play();
   }
   handleClickSlide(index) {
-    const circle = document.getElementById("circle-active");
+    if(!this.state.isWheeling)
+    {
+      const circle = document.getElementById("circle-active");
 
     const wrapper = document.getElementById("about-slide-wrap");
 
@@ -150,8 +147,11 @@ export default class About extends Component {
     this.setState({
       startY: -index * 100,
       slideIndex: index,
+      isWheeling: true,
+
       top: -3 + 26 * index,
     });
+    }
   }
 
   render() {
@@ -162,9 +162,7 @@ export default class About extends Component {
             onWheel={this.handleOnWheel}
             className="about-section section landing-page"
           >
-            
             <div className="about-container container">
-            
               <div className="scroll-hint">
                 <div className="scroll-hint-wrap">
                   <div id="circle-active" className="circle-active"></div>
@@ -191,7 +189,7 @@ export default class About extends Component {
               <div className="slide-side-text">
                 <p>All about me / My resume</p>
               </div>
-              
+
               <div className="about-profile-wrap" id="about-slide-wrap">
                 <div className="about-profile slide " id="slide">
                   <div className="about-content-wrap ">
@@ -214,9 +212,9 @@ export default class About extends Component {
                       </div>
                       <div className="profile-description">
                         <p>
-                        I am a UI designer and developer, born and raised in Kontum Province, VietNam.
-                        
-                          <br/>
+                          I am a UI designer and developer, born and raised in
+                          Kontum Province, VietNam.
+                          <br />
                           I have a passion for developing sites with clean,
                           beautiful code.
                           <br />
@@ -229,8 +227,18 @@ export default class About extends Component {
                         <div className="get-in-touch">
                           <p>GET IN TOUCH</p>
                         </div>
-                        <img src={Fb} alt="" />
-                        <img src={Ig} alt="" />
+                        <a
+                          href="https://www.facebook.com/profile.php?id=100011400712236"
+                          target="blank"
+                        >
+                          <img src={Fb} alt="" />
+                        </a>
+                        <a
+                          href="https://www.instagram.com/mint_stillwalks/"
+                          target="blank"
+                        >
+                          <img src={Ig} alt="" />
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -266,20 +274,29 @@ export default class About extends Component {
                       <div className="profile-description">
                         <p>
                           <span>Email</span> :{" "}
-                          <NavLink to="#"> minttran.9002@gmail.com</NavLink>
+                          <a target="blank" href="https://mailto:minttran.9001@gmail.com">
+                            {" "}
+                            minttran.9002@gmail.com
+                          </a>
                         </p>
                       </div>
                       <div className="profile-description">
                         <p>
                           <span>Git</span> :{" "}
-                          <NavLink to="#"> https://github.com/minttran9001</NavLink>
+                          <a
+                            target="blank"
+                            href="https://github.com/minttran9001"
+                          >
+                            {" "}
+                            https://github.com/minttran9001
+                          </a>
                         </p>
                       </div>
                       <div className="profile-description">
                         <p>
                           I am studying at University Information of Technology
-                          (UIT) since 2017 with major is Infomation System.
-                            And get started programming since 2020
+                          (UIT) since 2017 with major is Infomation System. And
+                          get started programming since 2020
                         </p>
                       </div>
                     </div>

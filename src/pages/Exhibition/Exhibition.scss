@@ -11,30 +11,31 @@
 
 .container{
     padding: 30px;
-    .paint-background{
-        pointer-events: none;
-        img{
-            opacity: .7;
-            width: 200px;
-            position: absolute;
-        }
-        .paint-1{
-            top: 100px;
-            left: 50px;
-        }
-        .paint-2{
-            top: 100px;
-            right:  50px;
-        }
-        .paint-3{
-            bottom:  0px;
-            width: 50px;
-            left: 200px;
-        }
-        .paint-4{
-            bottom: 10px;
-            right: 50px;
-        }
+    
+}
+.paint-background{
+    pointer-events: none;
+    img{
+        opacity: .7;
+        width: 200px;
+        position: absolute;
+    }
+    .paint-1{
+        top: 100px;
+        left: 50px;
+    }
+    .paint-2{
+        top: 100px;
+        right:  50px;
+    }
+    .paint-3{
+        bottom:  0px;
+        width: 50px;
+        left: 200px;
+    }
+    .paint-4{
+        bottom: 10px;
+        right: 50px;
     }
 }
 .qoute-container{
@@ -42,21 +43,43 @@
     align-items: center;
     height: 100%;
     justify-content: center;
-    .exhibition-qoute{
-        padding: 0 150px;
-        .qoute p{
-            font-size: 40px;
-        }
-        .qoute-link{
-            text-decoration: none;
-        }
-    }
+ 
+}
+.exhibition-qoute{
+    padding: 0 150px;
+   
+}
+.qoute p{
+    font-size: 40px;
+}
+.qoute-link{
+    text-decoration: none;
 }
 @media screen and (max-width:960px)
 {
-    .qoute-container{
-        .exhibition-qoute{
-            padding: 0 0px;
+    .qoute p{
+        font-size: 20px;
+    }
+    .exhibition-qoute{
+        padding: 0 0px;
+    }
+}
+@media screen and (max-width :320px)
+{
+    .qoute p{
+        font-size: 20px;
+    }
+    .paint-background{
+        img{
+            width: 100px;
+        }
+    }
+    .qoute-link{
+        button{
+            font-size: 12px;
+            img{
+                width: 30px;
+            }
         }
     }
 }
