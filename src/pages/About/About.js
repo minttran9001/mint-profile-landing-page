@@ -13,8 +13,6 @@ import SassIcon from "../../images/100ppi/icons8-sass-240.png";
 
 import ReduxIcon from "../../images/100ppi/icons8-redux-240.png";
 import PageTransition from "../../layout/PageTransition/PageTransition";
-import { NavLink } from "react-router-dom";
-
 export default class About extends Component {
   constructor(props) {
     super(props);

@@ -303,19 +303,17 @@ margin-top: 10px;
     }
     .project-view-detail{
         padding-left: 0;
-        padding: 100px 30px;
+        padding: 50px 30px;
         
        
     }
     .project-name{
-        position: absolute;
-        top: 30px;
-        width: 100%;
-        color: rgba($color: #ffffff, $alpha: .5);
+        // color: rgba($color: #ffffff, $alpha: .5);
         text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        margin-bottom: 0;
+        position: relative;
+        height : 100px;
+        
         &::before{
             display: none;
         }
@@ -327,7 +325,9 @@ margin-top: 10px;
 
         }
     }
-    
+    .project-description{
+        display: none;
+    }
     .project-button{
         visibility: hidden;
         opacity: 0;
